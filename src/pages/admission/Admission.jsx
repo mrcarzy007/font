@@ -1,5 +1,19 @@
 import { useRef, useState, useEffect } from "react";
+import styled from "styled-components";
+const Button = styled.button`
+  color: white;
+  background-color: #5c6bc0;
+  padding: 10px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0px 2px 2px lightgray;
+  transition: ease background-color 250ms;
 
+  &:hover {
+    background-color: #311b92;
+  }
+`;
 // const imageMimeType = /image\/(png|jpg|jpeg)/i;
 import Header from "../../components/Header";
 import HeaderImage from "../../images/admissionHeaderimg.jpg";
@@ -29,6 +43,16 @@ const Admission = () => {
       reader.readAsDataURL(file);
     }
   };
+  const clickMe = () => {
+    alert("say hello");
+  };
+  const handleKeyDown = (event) => {
+    if (event.ctrlKey && event.key === "p") {
+      alert("Ctrl + P was pressed!");
+      event.preventDefault(); // Prevents the default action
+    }
+  };
+
   return (
     <>
       <Header title="Admssion" image={HeaderImage}>
@@ -222,45 +246,42 @@ const Admission = () => {
           </div>
         </div>
         <div className={styles.passport__container}>
-         <div className={styles.main_box}>
-              <p>Recent Passport Size Photo Of The Father</p>
-                <div className={styles.img_box}>
-                  <img
-                  src={images.father}
-                  alt=""
-                  />
-                </div>
-              <div className={styles.hiden_file_box}>
-                <input type="file" onChange={(e) => handleImageUpload(e, "father")} />
-             </div>
-         </div>
-         <div className={styles.main_box}>
-              <p>Recent Passport Size Photo Of The Mother</p>
-                <div className={styles.img_box}>
-                  <img
-                  src={images.mother}
-                  alt=""
-                  />
-                </div>
-                <div className={styles.hiden_file_box}>
-                 <input type="file" onChange={(e) => handleImageUpload(e, "mother")} />
-                </div>
-                
-         </div>
-         <div className={styles.main_box}>
-              <p>Recent Passport Size Photo Of The Student</p>
-                <div className={styles.img_box}>
-                  <img
-                  src={images.student}
-                  alt=""
-                  />
-                </div>
-             <div className={styles.hiden_file_box}>
-                <input type="file" onChange={(e) => handleImageUpload(e, "student")} />
-             </div>
-         </div>
-          
-
+          <div className={styles.main_box}>
+            <p>Recent Passport Size Photo Of The Father</p>
+            <div className={styles.img_box}>
+              <img src={images.father} alt="" />
+            </div>
+            <div className={styles.hiden_file_box}>
+              <input
+                type="file"
+                onChange={(e) => handleImageUpload(e, "father")}
+              />
+            </div>
+          </div>
+          <div className={styles.main_box}>
+            <p>Recent Passport Size Photo Of The Mother</p>
+            <div className={styles.img_box}>
+              <img src={images.mother} alt="" />
+            </div>
+            <div className={styles.hiden_file_box}>
+              <input
+                type="file"
+                onChange={(e) => handleImageUpload(e, "mother")}
+              />
+            </div>
+          </div>
+          <div className={styles.main_box}>
+            <p>Recent Passport Size Photo Of The Student</p>
+            <div className={styles.img_box}>
+              <img src={images.student} alt="" />
+            </div>
+            <div className={styles.hiden_file_box}>
+              <input
+                type="file"
+                onChange={(e) => handleImageUpload(e, "student")}
+              />
+            </div>
+          </div>
         </div>
 
         <div className={styles.attach}>
@@ -273,8 +294,14 @@ const Admission = () => {
               Transfer Certificate & Progress Report (Form the Previous School)
             </li>
           </ol>
-          <hr />
         </div>
+        <div className={styles.container_btn}>
+          <Button onClick={clickMe}>Reset</Button>
+          <Button onKeyDown={handleKeyDown} tabIndex="0">
+            Submit
+          </Button>
+        </div>
+        <hr />
       </div>
     </>
   );

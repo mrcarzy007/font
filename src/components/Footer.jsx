@@ -18,7 +18,7 @@ const Footer = () => {
         <div className={`${Styles.container} ${Styles.footer__container}`}>
           <article>
             <Link to="/" className={Styles.Logo}>
-              <img src={Logo} alt="Footer Logo" />
+              <img className={Styles.footerLogo} src={Logo} alt="Footer Logo" />
             </Link>
             <p>Admin Office : Sector - 1/c-185 , Near Shri Ram Mandir</p>
             <p>Bokaro Steel City (Jharkhand)</p>

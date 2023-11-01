@@ -157,7 +157,7 @@
   list-style-type: decimal;
   color: black;
 }
-.attach hr {
+hr {
   width: 100%;
   border-top: 1px solid black;
   margin-top: 2px;
@@ -185,6 +185,13 @@
   position: absolute;
   opacity: 0;
 }
+.container_btn {
+  padding: 13px 0px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
 @media screen and( max-width:400px) {
   .form {
     width: 100%;

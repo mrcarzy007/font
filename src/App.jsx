@@ -12,7 +12,7 @@ import Admission from "./pages/admission/Admission";
 
 const App = () => {
   useEffect(() => {
-    fetch("/api")
+    fetch("/api/check")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

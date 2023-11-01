@@ -39,8 +39,10 @@ a {
   position: relative;
   top: 70%;
   transform: translateY(10%);
-  padding-top: 30px;
-  padding-left: 255px;
+  /* padding-top: 30px; */
+  /* padding-left: 255px; */
+  display: flex;
+  justify-content: center;
 }
 
 .right_column {
@@ -79,6 +81,8 @@ a {
 .form_container .row {
   margin: 0.5rem 0;
   display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .content {
@@ -121,7 +125,8 @@ textarea {
 }
 
 textarea {
-  width: 100%;
+  /* width: 100%; */
+
 }
 
 button[type="submit"] {
@@ -135,8 +140,18 @@ button[type="submit"] {
   transition: all 0.3s ease-in-out;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   flex: 1;
+  margin-top: 5px;
 }
 
 button[type="submit"]:hover {
   background-color: #1f1b2b;
+ 
+}
+
+@media only screen and (max-width: 1000px) {
+  .form_container {
+    width: 90%;
+    padding-right: 2px;
+    padding-left: 2px;
+  }
 }

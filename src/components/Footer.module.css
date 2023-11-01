@@ -21,11 +21,11 @@ a {
   color: var(--color-gray-100);
 }
 
-img {
+/* img {
   display: block;
   object-fit: cover;
   width: 100%;
-}
+} */
 
 /* Footer  */
 footer {
@@ -89,8 +89,8 @@ footer {
   font-size: medium;
 }
 
-.logo {
-  width: 4rem;
+.Logo {
+  width: 100%;
   display: block;
   gap: 6rem;
 }
