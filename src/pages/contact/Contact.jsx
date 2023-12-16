@@ -8,10 +8,7 @@ import styles from "./Contact.module.css";
 const Contact = () => {
   return (
     <>
-      <Header title="Contact Us" image={HeaderImage}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab ipsum error
-        ipsa veritatis aperiam illo, maxime fugiat!
-      </Header>
+      <Header title="Contact Us" image={HeaderImage}></Header>
       <section className={styles.contact}>
         <div className={`${styles.container} ${styles.contact__container}`}>
           <div className={styles.contact__wrapper}>

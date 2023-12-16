@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Logo from "../images/logo.png";
+import Logof from "../../public/Logo.png";
 import { FaLinkedin } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { AiFillTwitterCircle } from "react-icons/ai";
@@ -17,8 +17,12 @@ const Footer = () => {
       <footer>
         <div className={`${Styles.container} ${Styles.footer__container}`}>
           <article>
-            <Link to="/" className={Styles.Logo}>
-              <img className={Styles.footerLogo} src={Logo} alt="Footer Logo" />
+            <Link to="/" className={Styles.Logof}>
+              <img
+                className={Styles.footerLogo}
+                src={Logof}
+                alt="Footer Logo"
+              />
             </Link>
             <p>Admin Office : Sector - 1/c-185 , Near Shri Ram Mandir</p>
             <p>Bokaro Steel City (Jharkhand)</p>

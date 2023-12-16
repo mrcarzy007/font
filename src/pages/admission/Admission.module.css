@@ -1,21 +1,70 @@
-.container {
-  max-width: 900px;
+.formContainer {
+  max-width: 1000px;
   width: 100%;
-  border-radius: 6px;
-  margin: 20px auto;
   background-color: #fff;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin: 20px auto;
   padding: 10px 20px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+.subContainer {
+  display: flex;
+  align-items: center;
+  padding-bottom: 16px;
+}
+.Schlogo img {
+  width: 150px;
 }
 
-.header {
+.SchName {
+  padding-left: 6rem;
+}
+.SchName h1 {
+  color: #040d12;
+  font-size: 4.1rem;
+}
+.SchAddress {
+  justify-content: center;
+  align-items: center;
+}
+.SchAddress p {
+  text-align: center;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #4f4a45;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+.SchOffce {
+  display: flex;
+  align-items: center;
+  padding: 20px 10px;
+}
+
+.SchOffce .SchReg {
+  border: 1px solid black;
+  padding: 10px;
+  color: #4f4a45;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+.SchReg small {
+  text-decoration: underline;
+  font-weight: bold;
+}
+.SchOffce .SchRegname {
+  padding-left: 6rem;
+  font-weight: bolder;
+  font-size: 2.3rem;
+  color: #040d12;
+}
+.SchHeader {
   font-size: 20px;
   font-weight: 600;
   color: #333;
   position: relative;
 }
-
-.header::before {
+.SchHeader::before {
   content: "";
   position: absolute;
   left: 0;
@@ -24,56 +73,6 @@
   width: 50px;
   background-color: #4070f4;
 }
-
-/* main nav */
-.main__nav {
-  display: flex;
-  align-items: center;
-  padding-bottom: 16px;
-}
-.company__logo img {
-  width: 150px;
-}
-
-.company__name {
-  padding-left: 6rem;
-}
-.company__name h1 {
-  color: black;
-  font-size: 4rem;
-}
-
-.office {
-  display: flex;
-  align-items: center;
-  padding-top: 16px;
-}
-.office__container {
-  border: 2px solid black;
-  text-align: center;
-  padding: 12px;
-  color: #333;
-  font-weight: 250;
-}
-.office__container h5 {
-  color: black;
-}
-.addformname {
-  padding-left: 7rem;
-}
-.addformname h1 {
-  color: black;
-  font-weight: 400;
-  font-size: 2rem;
-}
-.address {
-  padding-right: 12px;
-  font-size: 1.3rem;
-  font-weight: bold;
-  padding-left: 30%;
-  color: rgb(51, 46, 46);
-}
-
 .form {
   width: 100%;
   padding: 10px;
@@ -91,17 +90,16 @@
   }
 }
 
-.formGroup {
+.formControler {
   display: flex;
   flex-direction: column;
-
   &:has(textarea) {
     grid-row-end: span 2;
   }
 
   & > label {
     color: #333;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 500;
     margin: 0;
     margin-left: 5px;
@@ -112,10 +110,9 @@
   }
 
   & > input {
-    flex-grow: 1;
     border-radius: 6px;
-    padding: 0 5px;
-    border: 1px solid #cccccc;
+    padding: 10px 0;
+    border: 2px solid #cccccc;
     background: #fff;
   }
 
@@ -128,28 +125,32 @@
     background: #fff;
   }
 }
-
-.acknowleged {
+.oneLine {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  width: 100%;
+  border-top: 3px dotted black;
+}
+.ackow {
+  align-items: center;
+  text-align: center;
+}
+.ackow h3 {
+  color: #333;
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+.ackow p {
+  color: red;
+  font-family: sans-serif;
+}
+.attach {
   margin-top: 20px;
-
-  & .ac_container h3 {
-    text-align: center;
-    color: black;
-    font-weight: bold;
-  }
-}
-.passport__container {
-  display: flex;
-  gap: 13px;
-}
-.passport__container input[type="file"] {
-  width: 70%;
-  height: 140px;
 }
 .attach p {
   color: black;
+  font-weight: bolder;
 }
-
 .list {
   margin-left: 1rem;
 }
@@ -157,51 +158,20 @@
   list-style-type: decimal;
   color: black;
 }
-hr {
-  width: 100%;
-  border-top: 1px solid black;
-  margin-top: 2px;
-  padding-top: 4px;
-}
-.main_box {
+.buttonContainer {
   display: flex;
-  flex-direction: column;
+  padding-left: 14px;
+  padding-top: 20px;
   align-items: center;
-  border: 1px solid #000;
-  text-align: center;
-  justify-content: center;
-  padding: 10px;
+  gap: 50px;
 }
-.img_box {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  overflow: hidden;
+.buttonContainer .subBtn {
+  align-items: center;
+  justify-content: space-between;
 }
-.img_box img {
-  width: 100%;
-}
-.hiden_file_box {
-  position: absolute;
-  opacity: 0;
-}
-.container_btn {
-  padding: 13px 0px;
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-}
-
-@media screen and( max-width:400px) {
-  .form {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    display: grid;
-    grid-template-columns: auto repeat(6, 65px) auto repeat(2, 65px) / repeat(
-        2,
-        1fr
-      );
-    gap: 10px 15px;
-  }
+.buttonContainer .clsBtn {
+  padding-left: 4rem;
+  border-radius: 3px;
+  color: #fff;
+  border: 2px solid red;
 }

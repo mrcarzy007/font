@@ -1,5 +1,5 @@
 import "./Navbar.css";
-import Logo from "../images/logo.png";
+import Logo from "../../public/Logo.png";
 import { Link, NavLink } from "react-router-dom";
 import { links } from "../data";
 import { VscThreeBars } from "react-icons/vsc";

@@ -46,11 +46,7 @@ const Query = () => {
   };
   return (
     <>
-      <Header title="Contact Us" image={HeaderImage}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint culpa
-        neque excepturi at dolores hic corrupti nostrum iusto, veniam voluptates
-        ipsum fugiat nobis placeat. A reprehenderit itaq
-      </Header>
+      <Header title="Contact Us" image={HeaderImage}></Header>
 
       <div className={styles.containers}>
         <div className={styles.form_container}>

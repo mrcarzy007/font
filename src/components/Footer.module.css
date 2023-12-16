@@ -89,10 +89,13 @@ footer {
   font-size: medium;
 }
 
-.Logo {
+/* .Logo {
   width: 100%;
   display: block;
   gap: 6rem;
+} */
+.Logof {
+  width: 100%;
 }
 
 /* footer media Query for (small medium  screens) */

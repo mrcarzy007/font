@@ -65,7 +65,7 @@ const About = () => {
           </div>
           <div className={styles.about__section_image}>
             <img
-              style={{ width: "600px", height: "400px" }}
+              
               src={VisionImage}
               alt="Our Vision Images"
             />
@@ -79,7 +79,7 @@ const About = () => {
         >
           <div className={styles.about__section_image}>
             <img
-              style={{ width: "600px", height: "400px" }}
+              
               src={MissionImage}
               alt="Our Mission Images"
             />

@@ -6,10 +6,7 @@ import { gallery } from "../../data";
 const Gallery = () => {
   return (
     <>
-      <Header title="Our Gallery" image={HeaderImage}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia ut
-        veritatis eum in iusto!
-      </Header>
+      <Header title="Our Gallery" image={HeaderImage}></Header>
       <section className={styles.gallery}>
         <div className={`${styles.container} ${styles.gallery__container}`}>
           {gallery.map(({ id, image, alt }) => {
