@@ -158,6 +158,35 @@
   list-style-type: decimal;
   color: black;
 }
+
+.photoareawrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.photoarea {
+  border: 2px solid black;
+  width: 130px;
+  height: 130px;
+  max-width: 125px;
+  margin: 6px 10px;
+  padding: 2px;
+  text-align: center;
+  flex: auto;
+  color: black;
+}
+
+.signaturearea {
+  width: 120px;
+  margin: 3px;
+  padding: 2px;
+  text-align: center;
+  flex: 3;
+  color: black;
+  align-self: center;
+}
+
 .buttonContainer {
   display: flex;
   padding-left: 14px;
@@ -174,4 +203,46 @@
   border-radius: 3px;
   color: #fff;
   border: 2px solid red;
+}
+.btns {
+  margin-top: 1.2rem;
+}
+button[type="button"] {
+  background-color: red;
+  color: #f5ecdc;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  flex: 1;
+  margin-top: 5px;
+  margin-right: 34px;
+}
+
+button[type="button"]:hover {
+  background-color: #1f1b2b;
+}
+
+.form {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  display: grid;
+  grid-template: auto repeat(6, 65px) auto repeat(2, 65px) / repeat(3, 1fr);
+  gap: 10px 15px;
+
+  & > .title {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    text-transform: capitalize;
+    color: #333;
+    /* font-weight: 500; */
+  }
+
+  @media (max-width: 600px) {
+    grid-template: auto repeat(8, 65px) / 1fr;
+  }
 }

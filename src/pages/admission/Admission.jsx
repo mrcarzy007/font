@@ -5,8 +5,41 @@ import styles from "./Admission.module.css";
 import LOGO from "../../../public/Logo.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useState } from "react";
+import { useReactToPrint } from "react-to-print";
+import { useState, useRef } from "react";
 const Admission = () => {
+  const ComponentPDF = useRef(null);
+  const resetForm = () => {
+    setInputvalue({
+      fname: "",
+      mName: "",
+      lname: "",
+      date: "",
+      aClass: "",
+      tounge: "",
+      religion: "",
+      Aadhar: "",
+      category: "",
+      ffname: "",
+      flname: "",
+      fqualification: "",
+      foccupation: "",
+      fphone: "",
+      frAadhar: "",
+      mfname: "",
+      mlname: "",
+      mqulification: "",
+      moccupation: "",
+      mphone: "",
+      mAadhar: "",
+      locname: "",
+      loclname: "",
+      locphone: "",
+      caddress: "",
+      paddress: "",
+    });
+  };
+
   const [inputvalue, setInputvalue] = useState({
     fname: "",
     mName: "",
@@ -48,7 +81,34 @@ const Admission = () => {
 
   const sendUserdata = async (e) => {
     e.preventDefault();
-
+    setInputvalue({
+      fname: " ",
+      mName: " ",
+      lname: " ",
+      date: " ",
+      aClass: " ",
+      tounge: " ",
+      religion: " ",
+      Aadhar: " ",
+      category: " ",
+      ffname: " ",
+      flname: " ",
+      fqualification: " ",
+      foccupation: " ",
+      fphone: " ",
+      frAadhar: " ",
+      mfname: " ",
+      mlname: "",
+      mqulification: " ",
+      moccupation: " ",
+      mphone: " ",
+      mAadhar: " ",
+      locname: " ",
+      loclname: " ",
+      locphone: " ",
+      caddress: "  ",
+      paddress: " ",
+    });
     const {
       fname,
       mName,
@@ -170,357 +230,385 @@ const Admission = () => {
         toast.success("Your Responce is Submitted");
         setInputvalue({
           ...inputvalue,
-          fname: "",
-          mName: "",
-          lname: "",
-          date: "",
-          aClass: "",
-          tounge: "",
-          religion: "",
-          Aadhar: "",
-          category: "",
-          ffname: "",
-          flname: "",
-          fqualification: "",
-          foccupation: "",
-          fphone: "",
-          frAadhar: "",
-          mfname: "",
-          mlname: "",
-          mqulification: "",
-          moccupation: "",
-          mphone: "",
-          mAadhar: "",
-          locname: "",
-          loclname: "",
-          locphone: "",
-          caddress: "",
-          paddress: "",
+          fname,
+          mName,
+          lname,
+          date,
+          aClass,
+          tounge,
+          religion,
+          Aadhar,
+          category,
+          ffname,
+          flname,
+          fqualification,
+          foccupation,
+          fphone,
+          frAadhar,
+          mfname,
+          mlname,
+          mqulification,
+          moccupation,
+          mphone,
+          mAadhar,
+          locname,
+          loclname,
+          locphone,
+          caddress,
+          paddress,
         });
       }
     }
   };
-
+  const generatepdf = useReactToPrint({
+    content: () => ComponentPDF.current,
+    documentTitle: "StudentData",
+    onAfterPrint: () => alert("Data saved in PDF"),
+  });
   return (
     <>
       <Header title="Admssion" image={HeaderImage}></Header>
-      <form
-        action="#"
-        method="POST"
-        className={styles.formContainer}
-        onSubmit={sendUserdata}
-      >
-        <div className={styles.subContainer}>
-          <a href="#" className={styles.Schlogo}>
-            <img src={LOGO} alt="School Logo" />
-          </a>
-          <div className={styles.SchName}>
-            <h1>ANKUR SCHOOL</h1>
+      <div ref={ComponentPDF} style={{ width: "100%" }}>
+        <form
+          action="#"
+          method="POST"
+          className={styles.formContainer}
+          onSubmit={sendUserdata}
+        >
+          <div className={styles.subContainer}>
+            <a href="#" className={styles.Schlogo}>
+              <img src={LOGO} alt="School Logo" />
+            </a>
+            <div className={styles.SchName}>
+              <h1>ANKUR SCHOOL</h1>
+            </div>
           </div>
-        </div>
-        <div className={styles.SchAddress}>
-          <p>Admin. Office: Qr. No 1C - 185. B.S City, Jharkhand</p>
-          <p>School Campus- Capm 2, Bokaro</p>
-        </div>
-        <div className={styles.SchOffce}>
-          <div className={styles.SchReg}>
-            <small>FOR OFFICE USE ONLY</small>
-            <p>Reg.No.:________________</p>
-            <p>Reg. Date:___/____/____</p>
-            <p>Fee:____Receipt:_____</p>
+          <div className={styles.SchAddress}>
+            <p>Admin. Office: Qr. No 1C - 185. B.S City, Jharkhand</p>
+            <p>School Campus- Capm 2, Bokaro</p>
           </div>
-          <div className={styles.SchRegname}>ADMISSION FROM</div>
-        </div>
-        <div className={styles.SchHeader}>Registration From</div>
-        <div className={styles.form}>
-          <div className={styles.formControler}>
-            <label htmlFor="fname">First Name</label>
-            <input
-              type="text"
-              name="fname"
-              id="fname"
-              value={inputvalue.fname}
-              onChange={getValue}
-            />
+          <div className={styles.SchOffce}>
+            <div className={styles.SchReg}>
+              <small>FOR OFFICE USE ONLY</small>
+              <p>Reg.No.:________________</p>
+              <p>Reg. Date:___/____/____</p>
+              <p>Fee:____Receipt:_____</p>
+            </div>
+            <div className={styles.SchRegname}>ADMISSION FROM</div>
           </div>
-          <div className={styles.formControler}>
-            <label htmlFor="mName">Middle Name</label>
+          <div className={styles.SchHeader}>Registration From</div>
+          <div className={styles.form}>
+            <div className={styles.formControler}>
+              <label htmlFor="fname">First Name</label>
+              <input
+                type="text"
+                name="fname"
+                id="fname"
+                value={inputvalue.fname}
+                onChange={getValue}
+              />
+            </div>
+            <div className={styles.formControler}>
+              <label htmlFor="mName">Middle Name</label>
 
-            <input
-              type="text"
-              name="mName"
-              id="mName"
-              onChange={getValue}
-              value={inputvalue.mName}
-            />
-          </div>
-          <div className={styles.formControler}>
-            <label htmlFor="lname">Last Name</label>
-            <input
-              type="text"
-              name="lname"
-              id="lname"
-              value={inputvalue.lname}
-              onChange={getValue}
-            />
-          </div>
-          <div className={styles.formControler}>
-            <label htmlFor="date">Date of birth</label>
-            <input
-              type="date"
-              name="date"
-              id="date"
-              value={inputvalue.date}
-              onChange={getValue}
-            />
-          </div>
-          <div className={styles.formControler}>
-            <label htmlFor="aClass">Admitting in Class</label>
-            <input
-              type="text"
-              name="aClass"
-              id="aClass"
-              onChange={getValue}
-              value={inputvalue.aClass}
-            />
-          </div>
-          <div className={styles.formControler}>
-            <label htmlFor="tounge">Mother Tounge</label>
-            <input
-              type="text"
-              name="tounge"
-              value={inputvalue.tounge}
-              id="tounge"
-              onChange={getValue}
-            />
-          </div>
-          <div className={styles.formControler}>
-            <label htmlFor="religion">Religion</label>
-            <input
-              type="text"
-              name="religion"
-              id="religion"
-              onChange={getValue}
-              value={inputvalue.religion}
-            />
-          </div>
-          <div className={styles.formControler}>
-            <label htmlFor="Aadhar">Aadhar No:</label>
-            <input
-              type="number"
-              name="Aadhar"
-              id="Aadhar"
-              onChange={getValue}
-              value={inputvalue.Aadhar}
-            />
-          </div>
-          <div className={styles.formControler}>
-            <label htmlFor="category">Category</label>
-            <input
-              type="text"
-              name="category"
-              id="category"
-              onChange={getValue}
-              value={inputvalue.category}
-            />
-          </div>
+              <input
+                type="text"
+                name="mName"
+                id="mName"
+                onChange={getValue}
+                value={inputvalue.mName}
+              />
+            </div>
+            <div className={styles.formControler}>
+              <label htmlFor="lname">Last Name</label>
+              <input
+                type="text"
+                name="lname"
+                id="lname"
+                value={inputvalue.lname}
+                onChange={getValue}
+              />
+            </div>
+            <div className={styles.formControler}>
+              <label htmlFor="date">Date of birth</label>
+              <input
+                type="date"
+                name="date"
+                id="date"
+                value={inputvalue.date}
+                onChange={getValue}
+              />
+            </div>
+            <div className={styles.formControler}>
+              <label htmlFor="aClass">Admitting in Class</label>
+              <input
+                type="text"
+                name="aClass"
+                id="aClass"
+                onChange={getValue}
+                value={inputvalue.aClass}
+              />
+            </div>
+            <div className={styles.formControler}>
+              <label htmlFor="tounge">Mother Tounge</label>
+              <input
+                type="text"
+                name="tounge"
+                value={inputvalue.tounge}
+                id="tounge"
+                onChange={getValue}
+              />
+            </div>
+            <div className={styles.formControler}>
+              <label htmlFor="religion">Religion</label>
+              <input
+                type="text"
+                name="religion"
+                id="religion"
+                onChange={getValue}
+                value={inputvalue.religion}
+              />
+            </div>
+            <div className={styles.formControler}>
+              <label htmlFor="Aadhar">Aadhar No:</label>
+              <input
+                type="number"
+                name="Aadhar"
+                id="Aadhar"
+                onChange={getValue}
+                value={inputvalue.Aadhar}
+              />
+            </div>
+            <div className={styles.formControler}>
+              <label htmlFor="category">Category</label>
+              <input
+                type="text"
+                name="category"
+                id="category"
+                onChange={getValue}
+                value={inputvalue.category}
+              />
+            </div>
 
-          <div className={styles.formControler}>
-            <label htmlFor="ffname">Father's First Name</label>
-            <input
-              type="text"
-              name="ffname"
-              id="ffname"
-              onChange={getValue}
-              value={inputvalue.ffname}
-            />
-          </div>
-          <div className={styles.formControler}>
-            <label htmlFor="flname">Father's Last Name</label>
-            <input
-              type="text"
-              value={inputvalue.flname}
-              name="flname"
-              id="flname"
-              onChange={getValue}
-            />
-          </div>
-          <div className={styles.formControler}>
-            <label htmlFor="fqualification">Qualification:</label>
-            <input
-              type="text"
-              name="fqualification"
-              id="fqualification"
-              onChange={getValue}
-              value={inputvalue.fqualification}
-            />
-          </div>
-          <div className={styles.formControler}>
-            <label htmlFor="foccupation">Occupation:</label>
-            <input
-              type="text"
-              name="foccupation"
-              id="foccupation"
-              onChange={getValue}
-              value={inputvalue.foccupation}
-            />
-          </div>
-          <div className={styles.formControler}>
-            <label htmlFor="fphone">Phone</label>
-            <input
-              type="number"
-              name="fphone"
-              id="fphone"
-              onChange={getValue}
-              value={inputvalue.fphone}
-            />
-          </div>
-          <div className={styles.formControler}>
-            <label htmlFor="frAadhar">Aadhar No:</label>
-            <input
-              type="number"
-              name="frAadhar"
-              onChange={getValue}
-              id="frAadhar"
-              value={inputvalue.frAadhar}
-            />
-          </div>
-          <div className={styles.formControler}>
-            <label htmlFor="mfname">Mother's First Name</label>
-            <input
-              type="text"
-              name="mfname"
-              onChange={getValue}
-              id="mfname"
-              value={inputvalue.mfname}
-            />
-          </div>
-          <div className={styles.formControler}>
-            <label htmlFor="mlname">Mother's Last Name</label>
+            <div className={styles.formControler}>
+              <label htmlFor="ffname">Father's First Name</label>
+              <input
+                type="text"
+                name="ffname"
+                id="ffname"
+                onChange={getValue}
+                value={inputvalue.ffname}
+              />
+            </div>
+            <div className={styles.formControler}>
+              <label htmlFor="flname">Father's Last Name</label>
+              <input
+                type="text"
+                value={inputvalue.flname}
+                name="flname"
+                id="flname"
+                onChange={getValue}
+              />
+            </div>
+            <div className={styles.formControler}>
+              <label htmlFor="fqualification">Qualification:</label>
+              <input
+                type="text"
+                name="fqualification"
+                id="fqualification"
+                onChange={getValue}
+                value={inputvalue.fqualification}
+              />
+            </div>
+            <div className={styles.formControler}>
+              <label htmlFor="foccupation">Occupation:</label>
+              <input
+                type="text"
+                name="foccupation"
+                id="foccupation"
+                onChange={getValue}
+                value={inputvalue.foccupation}
+              />
+            </div>
+            <div className={styles.formControler}>
+              <label htmlFor="fphone">Phone</label>
+              <input
+                type="number"
+                name="fphone"
+                id="fphone"
+                onChange={getValue}
+                value={inputvalue.fphone}
+              />
+            </div>
+            <div className={styles.formControler}>
+              <label htmlFor="frAadhar">Aadhar No:</label>
+              <input
+                type="number"
+                name="frAadhar"
+                onChange={getValue}
+                id="frAadhar"
+                value={inputvalue.frAadhar}
+              />
+            </div>
+            <div className={styles.formControler}>
+              <label htmlFor="mfname">Mother's First Name</label>
+              <input
+                type="text"
+                name="mfname"
+                onChange={getValue}
+                id="mfname"
+                value={inputvalue.mfname}
+              />
+            </div>
+            <div className={styles.formControler}>
+              <label htmlFor="mlname">Mother's Last Name</label>
 
-            <input
-              type="text"
-              onChange={getValue}
-              name="mlname"
-              value={inputvalue.mlname}
-              id="mlname"
-            />
+              <input
+                type="text"
+                onChange={getValue}
+                name="mlname"
+                value={inputvalue.mlname}
+                id="mlname"
+              />
+            </div>
+            <div className={styles.formControler}>
+              <label htmlFor="mqulification">Qulification:</label>
+              <input
+                type="text"
+                name="mqulification"
+                id="mqulification"
+                onChange={getValue}
+                value={inputvalue.mqulification}
+              />
+            </div>
+            <div className={styles.formControler}>
+              <label htmlFor="moccupation">Occupation:</label>
+              <input
+                type="text"
+                name="moccupation"
+                id="moccupation"
+                onChange={getValue}
+                value={inputvalue.moccupation}
+              />
+            </div>
+            <div className={styles.formControler}>
+              <label htmlFor="mphone">Phone</label>
+              <input
+                type="number"
+                name="mphone"
+                id="mphone"
+                onChange={getValue}
+                value={inputvalue.mphone}
+              />
+            </div>
+            <div className={styles.formControler}>
+              <label htmlFor="mAadhar">Aadhar No:</label>
+              <input
+                type="number"
+                name="mAadhar"
+                id="mAadhar"
+                onChange={getValue}
+                value={inputvalue.mAadhar}
+              />
+            </div>
+            <div className={styles.formControler}>
+              <label htmlFor="locname">Local Guadian's First Name:</label>
+              <input
+                type="text"
+                name="locname"
+                id="locname"
+                onChange={getValue}
+                value={inputvalue.locname}
+              />
+            </div>
+            <div className={styles.formControler}>
+              <label htmlFor="loclname">Local Guadian's Last Name:</label>
+              <input
+                type="text"
+                name="loclname"
+                id="loclname"
+                onChange={getValue}
+                value={inputvalue.loclname}
+              />
+            </div>
+            <div className={styles.formControler}>
+              <label htmlFor="locphone">Phone No:</label>
+              <input
+                type="number"
+                name="locphone"
+                id="locphone"
+                onChange={getValue}
+                value={inputvalue.locphone}
+              />
+            </div>
+            <div className={styles.formControler}>
+              <label htmlFor="caddress">Current Address:</label>
+              <textarea
+                name="caddress"
+                id="caddress"
+                cols="30"
+                rows="10"
+                onChange={getValue}
+                value={inputvalue.caddress}
+              ></textarea>
+            </div>
+            <div className={styles.formControler}>
+              <label htmlFor="paddress">Permanent Address:</label>
+              <textarea
+                name="paddress"
+                id="paddress"
+                cols="30"
+                rows="10"
+                onChange={getValue}
+                value={inputvalue.paddress}
+              ></textarea>
+            </div>
           </div>
-          <div className={styles.formControler}>
-            <label htmlFor="mqulification">Qulification:</label>
-            <input
-              type="text"
-              name="mqulification"
-              id="mqulification"
-              onChange={getValue}
-              value={inputvalue.mqulification}
-            />
+          <hr className={styles.oneLine} />
+          <div className={styles.ackow}>
+            <h3>Acknowledgement</h3>
+            <p>
+              I hereby certify all of the information provided by me in this
+              application(or any other accompanying or required documents) is
+              correct, accurate and complete to the best of my knowledge
+            </p>
           </div>
-          <div className={styles.formControler}>
-            <label htmlFor="moccupation">Occupation:</label>
-            <input
-              type="text"
-              name="moccupation"
-              id="moccupation"
-              onChange={getValue}
-              value={inputvalue.moccupation}
-            />
+          <div className={styles.attach}>
+            <p>Please Attach:</p>
+            <ol className={styles.list}>
+              <li>Aadhar Cards Of Father & Mother</li>
+              <li>Aadhar Card Of Candidate</li>
+              <li>Birth Certificate Of Candidate</li>
+              <li>
+                Transfer Certificate & Progress Report (Form The Previous
+                School)
+              </li>
+            </ol>
           </div>
-          <div className={styles.formControler}>
-            <label htmlFor="mphone">Phone</label>
-            <input
-              type="number"
-              name="mphone"
-              id="mphone"
-              onChange={getValue}
-              value={inputvalue.mphone}
-            />
+          <div className={styles.photoareawrapper}>
+            <div className={styles.photoarea}>
+              Recent Passport size photo of Father
+            </div>
+            <div className={styles.photoarea}>
+              Recent Passport size photo of Student
+            </div>
+            <div className={styles.photoarea}>
+              Recent Passport size photo of Mother
+            </div>
+            <div className={styles.signaturearea}>
+              signature of Parent/Guardian
+            </div>
           </div>
-          <div className={styles.formControler}>
-            <label htmlFor="mAadhar">Aadhar No:</label>
-            <input
-              type="number"
-              name="mAadhar"
-              id="mAadhar"
-              onChange={getValue}
-              value={inputvalue.mAadhar}
-            />
+          <div className={styles.btns}>
+            <button type="button" onClick={resetForm}>
+              Reset
+            </button>
+            <button type="submit" onClick={generatepdf}>
+              Submit
+            </button>
           </div>
-          <div className={styles.formControler}>
-            <label htmlFor="locname">Local Guadian's First Name:</label>
-            <input
-              type="text"
-              name="locname"
-              id="locname"
-              onChange={getValue}
-              value={inputvalue.locname}
-            />
-          </div>
-          <div className={styles.formControler}>
-            <label htmlFor="loclname">Local Guadian's Last Name:</label>
-            <input
-              type="text"
-              name="loclname"
-              id="loclname"
-              onChange={getValue}
-              value={inputvalue.loclname}
-            />
-          </div>
-          <div className={styles.formControler}>
-            <label htmlFor="locphone">Phone No:</label>
-            <input
-              type="number"
-              name="locphone"
-              id="locphone"
-              onChange={getValue}
-              value={inputvalue.locphone}
-            />
-          </div>
-          <div className={styles.formControler}>
-            <label htmlFor="caddress">Current Address:</label>
-            <textarea
-              name="caddress"
-              id="caddress"
-              cols="30"
-              rows="10"
-              onChange={getValue}
-              value={inputvalue.caddress}
-            ></textarea>
-          </div>
-          <div className={styles.formControler}>
-            <label htmlFor="paddress">Permanent Address:</label>
-            <textarea
-              name="paddress"
-              id="paddress"
-              cols="30"
-              rows="10"
-              onChange={getValue}
-              value={inputvalue.paddress}
-            ></textarea>
-          </div>
-        </div>
-        <hr className={styles.oneLine} />
-        <div className={styles.ackow}>
-          <h3>Acknowledgement</h3>
-          <p>
-            I hereby certify all of the information provided by me in this
-            application(or any other accompanying or required documents) is
-            correct, accurate and complete to the best of my knowledge
-          </p>
-        </div>
-        <div className={styles.attach}>
-          <p>Please Attach:</p>
-          <ol className={styles.list}>
-            <li>Aadhar Cards Of Father & Mother</li>
-            <li>Aadhar Card Of Candidate</li>
-            <li>Birth Certificate Of Candidate</li>
-            <li>
-              Transfer Certificate & Progress Report (Form The Previous School)
-            </li>
-          </ol>
-        </div>
-        <button type="submit">Submit</button>
-      </form>
+        </form>
+      </div>
       <ToastContainer />
     </>
   );
