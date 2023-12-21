@@ -6,12 +6,6 @@ import { AiFillTwitterCircle } from "react-icons/ai";
 import { FiInstagram } from "react-icons/fi";
 import Styles from "./Footer.module.css";
 const Footer = () => {
-  // window.onload = displayClock();
-  // function displayClock() {
-  //   var display = new Date().toLocaleTimeString();
-  //   document.body.innerHTML = display;
-  //   setTimeout(displayClock, 1000);
-  // }
   return (
     <>
       <footer>

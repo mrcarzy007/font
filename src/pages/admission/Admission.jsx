@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useReactToPrint } from "react-to-print";
 import { useState, useRef } from "react";
 const Admission = () => {
-  const ComponentPDF = useRef(null);
+  const ComponentPDF = useRef();
   const resetForm = () => {
     setInputvalue({
       fname: "",
@@ -80,35 +80,39 @@ const Admission = () => {
   };
 
   const sendUserdata = async (e) => {
-    e.preventDefault();
-    setInputvalue({
-      fname: " ",
-      mName: " ",
-      lname: " ",
-      date: " ",
-      aClass: " ",
-      tounge: " ",
-      religion: " ",
-      Aadhar: " ",
-      category: " ",
-      ffname: " ",
-      flname: " ",
-      fqualification: " ",
-      foccupation: " ",
-      fphone: " ",
-      frAadhar: " ",
-      mfname: " ",
-      mlname: "",
-      mqulification: " ",
-      moccupation: " ",
-      mphone: " ",
-      mAadhar: " ",
-      locname: " ",
-      loclname: " ",
-      locphone: " ",
-      caddress: "  ",
-      paddress: " ",
-    });
+    if (sendUserdata) {
+      e.preventDefault();
+    } else {
+      setInputvalue({
+        fname: " ",
+        mName: " ",
+        lname: " ",
+        date: " ",
+        aClass: " ",
+        tounge: " ",
+        religion: " ",
+        Aadhar: " ",
+        category: " ",
+        ffname: " ",
+        flname: " ",
+        fqualification: " ",
+        foccupation: " ",
+        fphone: " ",
+        frAadhar: " ",
+        mfname: " ",
+        mlname: " ",
+        mqulification: " ",
+        moccupation: " ",
+        mphone: " ",
+        mAadhar: " ",
+        locname: " ",
+        loclname: " ",
+        locphone: " ",
+        caddress: "  ",
+        paddress: " ",
+      });
+    }
+
     const {
       fname,
       mName,
@@ -547,7 +551,7 @@ const Admission = () => {
                 name="caddress"
                 id="caddress"
                 cols="30"
-                rows="10"
+                rows="20"
                 onChange={getValue}
                 value={inputvalue.caddress}
               ></textarea>
@@ -558,7 +562,7 @@ const Admission = () => {
                 name="paddress"
                 id="paddress"
                 cols="30"
-                rows="10"
+                rows="20"
                 onChange={getValue}
                 value={inputvalue.paddress}
               ></textarea>

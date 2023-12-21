@@ -1,17 +1,15 @@
 import SectionHead from "./SectionHead";
 import { FaQuestion } from "react-icons/fa";
 import { faqs } from "../data";
-import "./FAQ";
 import FAQ from "./FAQ";
-import styles from "./Faqs.module.css";
-
+import "../pages/home/Home.css";
 const FAQs = () => {
   return (
     <>
-      <section className={styles.faqs}>
-        <div className={`${styles.container} ${styles.faqs__container}`}>
+      <section className="faqs">
+        <div className="container faqs__container">
           <SectionHead icon={<FaQuestion />} title="FAQs" />
-          <div className={styles.faqs__wrapper}>
+          <div className="faqs__wrapper">
             {faqs.map(({ id, question, answer }) => {
               return <FAQ key={id} question={question} answer={answer} />;
             })}

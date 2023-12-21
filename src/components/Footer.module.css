@@ -118,8 +118,8 @@ footer {
 /* footer media Query for (small screens) */
 
 @media screen and (max-width: 600px) {
-  h1 {
-    font-size: 2.2rem;
+  h5 {
+    font-size: 1rem;
   }
   footer {
     margin-top: 7rem;
