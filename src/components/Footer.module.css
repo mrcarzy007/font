@@ -135,3 +135,9 @@ footer {
     text-align: center;
   }
 }
+
+@media (max-width: 600px) {
+  .footer__container article h1 {
+    margin-left: 21vw;
+  }
+}

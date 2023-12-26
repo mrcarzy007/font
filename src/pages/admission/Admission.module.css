@@ -245,4 +245,15 @@ button[type="button"]:hover {
   @media (max-width: 600px) {
     grid-template: auto repeat(8, 65px) / 1fr;
   }
+  .Schlogo {
+    visibility: none;
+  }
+
+  .SchName h1 {
+    visibility: none;
+  }
+
+  element.style {
+    display: none;
+  }
 }
